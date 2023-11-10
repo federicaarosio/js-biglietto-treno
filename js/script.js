@@ -8,5 +8,22 @@
 const totalKm = parseInt(prompt("Type how many kilometers you want to travel"));
 const passengerAge = parseInt(prompt("Type how old is the passenger"));
 
-// Quanto costa il viaggio senza sconto?
-let ticketPrice = totalKm * 0.21;
+// Calcolo quanto costa il viaggio senza sconto
+const ticketPrice = totalKm * 0.21;
+
+//Calcolo quanto costa il viaggio con lo sconto a seconda del passeggero
+let pgDiscount;
+
+if (passengerAge < 18) {
+    pgDiscount = ticketPrice * 20 / 100;
+} else if (passengerAge >= 65) {
+    pgDiscount = ticketPrice * 40 / 100;
+} else {
+    pgDiscount = 0;
+}
+
+const finalPrice = ticketPrice - pgDiscount;
+
+document.getElementById("output").innerHTML="Il prezzo finale del biglietto é: " + finalPrice.toFixed(2) + " euro";
+
+//Indico il prezzo finale con max 2 decimali
